@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button, Container } from "reactstrap";
 import styles from "./headerNoAuth.module.scss";
 
@@ -17,12 +18,24 @@ export default function HeaderNoAuth() {
           className={styles.imgCta}
         />
       </div>
-      <Container>
-        <img src="/LogoOnebitflix.svg" alt="LogoOnebitflix" />
-        <div></div>
-        <Button outline color="primary">
-          Entrar
-        </Button>
+      <Container className={styles.nav}>
+        <img
+          src="/LogoOnebitflix.svg"
+          alt="LogoOnebitflix"
+          className={styles.imgLogoNav}
+        />
+        <div>
+          <Link href="/login">
+            <Button className={styles.navBtn} outline>
+              Entrar
+            </Button>
+          </Link>
+          <Link href="/register">
+            <Button className={styles.navBtn} outline>
+              Quero me registrar
+            </Button>
+          </Link>
+        </div>
       </Container>
     </>
   );
