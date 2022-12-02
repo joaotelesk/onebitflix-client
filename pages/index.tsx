@@ -1,17 +1,22 @@
 import Head from "next/head";
-import styles from "../styles/HomeNoAuth.module.scss";
+import HeaderNoAuth from "../src/components/homeNoAuth/headerNoAuth";
+//import styles from "../styles/HomeNoAuth.module.scss";
 
-const HomeNoAuth = () => {
+export default function HomeNoAuth() {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Onbitflix</title>
+        <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+        <meta property="og:title" content="Onebitflix" key="title" />
+        <meta
+          name="description"
+          content="tenha acesso aos melhores conteúdo de programação de uma forma simples e fácil!"
+        />
       </Head>
       <main>
-        <h1>Ola Mundo</h1>
+        <HeaderNoAuth />
       </main>
     </>
   );
-};
-
-export default HomeNoAuth;
+}
