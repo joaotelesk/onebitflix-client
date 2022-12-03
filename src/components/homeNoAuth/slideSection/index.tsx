@@ -11,7 +11,7 @@ interface props {
 export default function ({ newestCourses }: props) {
   return (
     <>
-      <Container>
+      <Container className="d-flex flex-column align-items-center py-5">
         <p className={styles.sectionTitles}>AULAS JÁ DISPONÍVEIS</p>
         <SlideComponent course={newestCourses} />
         <Link href="/register">
