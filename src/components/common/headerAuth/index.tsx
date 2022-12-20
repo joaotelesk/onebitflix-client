@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container, Form, Input } from "reactstrap";
 import styles from "./headerAuth.module.scss";
 import Modal from "react-modal";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import profileService from "../../../services/profileService";
 
@@ -12,7 +12,17 @@ export default function HeaderAuth() {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
   const [initials, setInitials] = useState("");
+  const [searchName, setSearchName] = useState("");
 
+  async function handleSearch(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    router.push(`search?name=${searchName}`);
+    setSearchName("");
+  }
+  function handleSearchClick() {
+    router.push(`search?name=${searchName}`);
+    setSearchName("");
+  }
   useEffect(() => {
     profileService.fetchCurrent().then((user) => {
       const firstNameInitial = user.firstName.slice(0, 1);
@@ -41,18 +51,23 @@ export default function HeaderAuth() {
           />
         </Link>
         <div className="d-flex align-items-center">
-          <Form>
+          <Form onSubmit={handleSearch}>
             <Input
               name="search"
               type="search"
               placeholder="Pesquisar"
               className={styles.input}
+              value={searchName}
+              onChange={(event) =>
+                setSearchName(event.currentTarget.value.toLowerCase())
+              }
             />
           </Form>
           <img
             src="/homeAuth/iconSearch.svg"
             alt="lupaHeader"
             className={styles.searchImg}
+            onClick={handleSearchClick}
           />
           <p className={styles.userProfile} onClick={handleOpenModal}>
             {initials}
