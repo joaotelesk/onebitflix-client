@@ -36,7 +36,7 @@ export default function Search() {
           <HeaderAuth />
         </div>
         {searchResult.length >= 1 ? (
-          <div className={styles.searchResult}>
+          <div className={styles.searchContainer}>
             <Container className="d-flex flex-wrap justify-content-center gap-5 py-5">
               {searchResult?.map((course) => (
                 <SearchCard key={course.id} course={course} />
@@ -44,7 +44,9 @@ export default function Search() {
             </Container>
           </div>
         ) : (
-          <p className={styles.noSearchResult}>Resultado não encontrado</p>
+          <div className={styles.searchContainer}>
+            <p className={styles.noSearchResult}>Resultado não encontrado</p>
+          </div>
         )}
         <div className={styles.headFooterBg}>
           <Footer />
