@@ -127,7 +127,7 @@ const courseService = {
       });
     return res;
   },
-  getEpisodes: async (id: number | string) => {
+  getCourse: async (id: number | string) => {
     const token = sessionStorage.getItem("onebitflix-token");
 
     const res = await api
