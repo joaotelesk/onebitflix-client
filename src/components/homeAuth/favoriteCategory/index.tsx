@@ -10,7 +10,7 @@ export default function FavoriteCategory() {
   return (
     <>
       <p className={styles.titleCategory}>MEUS FAVORITOS</p>
-      {data.data.courses.length > 1 ? (
+      {data.data.courses.length >= 1 ? (
         <SlideComponent course={data.data.courses} />
       ) : (
         <p className="text-center pt-3 h5">
