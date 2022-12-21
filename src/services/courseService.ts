@@ -39,6 +39,7 @@ const courseService = {
   },
   addToFav: async (courseId: number | string) => {
     const token = sessionStorage.getItem("onebitflix-token");
+
     const res = await api
       .post(
         "/favorites",
@@ -49,9 +50,10 @@ const courseService = {
           },
         }
       )
-      .catch((err) => {
-        return err.response;
+      .catch((error) => {
+        return error.response;
       });
+
     return res;
   },
   removeToFav: async (courseId: number | string) => {
