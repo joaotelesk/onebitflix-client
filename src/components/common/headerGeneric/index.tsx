@@ -15,7 +15,7 @@ export default function HeaderGeneric({ logoUrl, btnUrl, btnContent }: props) {
         <Container className={styles.headerContainer}>
           <Link href={logoUrl}>
             <img
-              src="./logoOnebitflix.svg"
+              src="/logoOnebitflix.svg"
               alt="logoRegister"
               className={styles.headerLogo}
             />
