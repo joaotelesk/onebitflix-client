@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import HeaderAuth from "../../src/components/common/headerAuth";
 import courseService, { CourseType } from "../../src/services/courseService";
 import { Button, Container } from "reactstrap";
+import PageSpinner from "../../src/components/common/spinner";
+import EpisodeList from "../../src/components/episodeList";
+import Footer from "../../src/components/common/footer";
 
 export default function CoursePage() {
   const [course, setCourse] = useState<CourseType>();
@@ -51,6 +54,7 @@ export default function CoursePage() {
       setFavorited(true);
     }
   }
+  if (course === undefined) return <PageSpinner />;
   return (
     <>
       <Head>
@@ -72,7 +76,11 @@ export default function CoursePage() {
         <Container className={styles.courseInfo}>
           <p className={styles.courseTitle}>{course?.name}</p>
           <p className={styles.courseDescription}>{course?.synopsis}</p>
-          <Button outline className={styles.button}>
+          <Button
+            outline
+            className={styles.button}
+            disabled={course?.episodes?.length === 0 ? true : false}
+          >
             ASSISTIR AGORA
             <img
               src="/buttonPlay.svg"
@@ -113,6 +121,25 @@ export default function CoursePage() {
             )}
           </div>
         </Container>
+        <Container className={styles.episodeInfo}>
+          <p className={styles.episodeDivision}>EPISÓDIOS</p>
+          <p className={styles.episodeLength}>
+            {course?.episodes?.length} - episódios
+          </p>
+          {course?.episodes?.length === 0 ? (
+            <p>
+              <strong>
+                Ainda não temos episódios neste curso, volte mais tarde!
+                &#x1F606;&#x1F918;
+              </strong>
+            </p>
+          ) : (
+            course?.episodes?.map((episode) => (
+              <EpisodeList episode={episode} key={episode.id} />
+            ))
+          )}
+        </Container>
+        <Footer />
       </main>
     </>
   );
