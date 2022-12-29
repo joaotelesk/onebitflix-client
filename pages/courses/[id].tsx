@@ -135,7 +135,7 @@ export default function CoursePage() {
             </p>
           ) : (
             course?.episodes?.map((episode) => (
-              <EpisodeList episode={episode} key={episode.id} />
+              <EpisodeList course={course} episode={episode} key={episode.id} />
             ))
           )}
         </Container>
