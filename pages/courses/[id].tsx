@@ -92,6 +92,11 @@ export default function CoursePage() {
             outline
             className={styles.button}
             disabled={course?.episodes?.length === 0 ? true : false}
+            onClick={() =>
+              router.push(
+                `/courses/episodes/0?courseid=${course.id}&episodeid=0`
+              )
+            }
           >
             ASSISTIR AGORA
             <img
