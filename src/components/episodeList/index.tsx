@@ -18,7 +18,11 @@ export default function EpisodeList({ episode, course }: props) {
     return result;
   }
   function handleEpisodePlayer() {
-    router.push(`/courses/episodes/${episode.order - 1}?courseid=${course.id}`);
+    router.push(
+      `/courses/episodes/${episode.order - 1}?courseid=${course.id}&episodeid=${
+        episode.id
+      }`
+    );
   }
   return (
     <>
